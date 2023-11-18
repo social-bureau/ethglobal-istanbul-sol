@@ -121,6 +121,11 @@ const config: any = {
       accounts: accounts,
       chainId: 88882,
     },
+    chiado: {
+      url: 'https://rpc.chiadochain.net',
+      accounts: accounts,
+      chainId: 10200,
+    },
     mantle_testnet: {
       url: 'https://rpc.testnet.mantle.xyz/',
       accounts: accounts,
@@ -139,6 +144,7 @@ const config: any = {
       linea_goerli: 'BE73V3WIFAP2WP7SQBHV95AQBMN1URH4JP',
       alfajores: 'PQ6KHZ9W2YZ7HI3KW651DIEMWS2HUEIXYN',
       mantle_testnet: 'key',
+      chiado: '46d152e9-54c0-4a4b-86cd-3ffb7c4205ab',
     },
     customChains: [
       {
@@ -187,6 +193,14 @@ const config: any = {
         urls: {
           apiURL: 'https://spicy-explorer.chiliz.com/api',
           browserURL: 'https://spicy-explorer.chiliz.com/',
+        },
+      },
+      {
+        network: 'chiado',
+        chainId: 10200,
+        urls: {
+          apiURL: 'https://gnosis-chiado.blockscout.com/api/v2',
+          browserURL: 'https://gnosis-chiado.blockscout.com/',
         },
       },
       {
