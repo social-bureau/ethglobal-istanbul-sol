@@ -111,6 +111,16 @@ const config: any = {
       accounts: accounts,
       chainId: 59140,
     },
+    alfajores: {
+      url: 'https://alfajores-forno.celo-testnet.org',
+      accounts: accounts,
+      chainId: 44787,
+    },
+    chiliz_spicy_testnet: {
+      url: 'https://spicy-rpc.chiliz.com',
+      accounts: accounts,
+      chainId: 88882,
+    },
   },
   etherscan: {
     apiKey: {
@@ -119,8 +129,10 @@ const config: any = {
       polygon_mumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
       bkc_testnet: 'key',
       bkc: 'key',
+      chiliz_spicy_testnet: 'key',
       polygonMumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
       linea_goerli: 'BE73V3WIFAP2WP7SQBHV95AQBMN1URH4JP',
+      alfajores: 'PQ6KHZ9W2YZ7HI3KW651DIEMWS2HUEIXYN',
     },
     customChains: [
       {
@@ -153,6 +165,22 @@ const config: any = {
         urls: {
           apiURL: 'https://api-testnet.lineascan.build/api',
           browserURL: 'https://goerli.lineascan.build',
+        },
+      },
+      {
+        network: 'alfajores',
+        chainId: 44787,
+        urls: {
+          apiURL: 'https://api-alfajores.celoscan.io/api',
+          browserURL: 'https://alfajores.celoscan.io/',
+        },
+      },
+      {
+        network: 'chiliz_spicy_testnet',
+        chainId: 88882,
+        urls: {
+          apiURL: 'https://spicy-explorer.chiliz.com/api',
+          browserURL: 'https://spicy-explorer.chiliz.com/',
         },
       },
     ],
