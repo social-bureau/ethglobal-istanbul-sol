@@ -1,0 +1,18 @@
+# folders
+artifacts/
+build/
+cache/
+coverage/
+dist/
+lib/
+node_modules/
+typechain/
+
+flatten/
+
+contracts/offchain-aggregator/
+
+# files
+coverage.json
+*.csv
+ADDRESS.md

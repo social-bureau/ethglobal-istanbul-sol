@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false
+  },
+  "include": ["./scripts", "./test", "./libs",  "./tasks", "./utils", "./deploy", "./deploy_outside", "hardhat.config.ts"],
+
+  "exclude": ["node_modules"]
+}

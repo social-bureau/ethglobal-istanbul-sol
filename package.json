@@ -1,0 +1,68 @@
+{
+  "name": "ethglobal-istanbul-sol",
+  "version": "1.0.0",
+  "description": "for hackathon event, istanbul",
+  "scripts": {
+    "console": "hardhat console",
+    "deploy": "hardhat deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/social-bureau/ethglobal-istanbul-sol.git"
+  },
+  "author": "Roongroj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/social-bureau/ethglobal-istanbul-sol/issues"
+  },
+  "homepage": "https://github.com/social-bureau/ethglobal-istanbul-sol#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.4",
+    "@nomiclabs/buidler": "^1.4.8",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^3.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@primitivefi/hardhat-dodoc": "^0.2.3",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^6.1.2",
+    "@types/chai": "^4.3.9",
+    "@types/mocha": "^10.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "ascii85": "^1.0.2",
+    "chai": "^4.3.4",
+    "chai-eventemitter2": "^0.2.1",
+    "dotenv": "^10.0.0",
+    "eciesjs": "^0.3.15",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "ethereum-waffle": "^3.1.1",
+    "ethers": "^5.0.0",
+    "hardhat": "^2.7.0",
+    "hardhat-abi-exporter": "^2.10.1",
+    "hardhat-deploy": "^0.9.14",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8",
+    "husky": "^4.2.5",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "prettier-plugin-solidity": "^1.0.0-beta.19",
+    "solhint": "3.3.7",
+    "solhint-plugin-prettier": "0.0.5",
+    "solidity-coverage": "0.7.20",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.1.0",
+    "web3": "^1.7.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.5.0",
+    "@openzeppelin/contracts-upgradeable": "^4.5.2",
+    "@openzeppelin/hardhat-upgrades": "^1.17.0",
+    "bip39": "^3.0.4",
+    "eslint-plugin": "^1.0.1",
+    "hardhat-contract-sizer": "^2.10.0",
+    "typescript": "^4.6.3"
+  }
+}
