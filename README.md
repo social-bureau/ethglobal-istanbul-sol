@@ -24,7 +24,7 @@ The implemented version of the key keeper.
 | Linea Goerli             | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://goerli.lineascan.build/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                        |
 | Mantle Testnet           | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://explorer.testnet.mantle.xyz/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A/contracts#address-tabs) |
 | Polygon Mumbai           | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://mumbai.polygonscan.com/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                        |
-| Polygon zkEVM            | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://testnet-zkevm.polygonscan.com/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                 |
+| Polygon zkEVM Testnet    | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://testnet-zkevm.polygonscan.com/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                 |
 | Sepolia                  | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://sepolia.etherscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                          |
 
 
