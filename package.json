@@ -4,7 +4,8 @@
   "description": "for hackathon event, istanbul",
   "scripts": {
     "console": "hardhat console",
-    "deploy": "hardhat deploy"
+    "deploy": "hardhat deploy",
+    "test": "hardhat test"
   },
   "repository": {
     "type": "git",
