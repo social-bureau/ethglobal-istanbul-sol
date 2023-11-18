@@ -8,11 +8,11 @@ We named the contract 'Prontera' where people live and where the town keeper is.
 
 ### IProntera.sol
 
-The interface of the key keeper.
+The interface of the key keeper. Read the doc [here](./docs/interfaces/IProntera.md)
 
 ### Prontera.sol
 
-The implemented version of the key keeper.
+The implemented version of the key keeper. Read the doc [here](./docs/core/Prontera.md)
 
 ## Deployed Contracts
 
