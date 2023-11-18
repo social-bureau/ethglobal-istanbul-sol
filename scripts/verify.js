@@ -7,6 +7,7 @@ async function main() {
   const chainId = await getChainId();
   const network = hre.network.name;
 
+  console.log(network);
   //const deployedContracts = require(`../deployments/${network}`);
   const directoryPath = `./deployments/${network}`;
   fs.readdir(directoryPath, (error, files) => {

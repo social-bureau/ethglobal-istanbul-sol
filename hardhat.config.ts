@@ -91,6 +91,11 @@ const config: any = {
       url: 'https://polygon-mumbai.blockpi.network/v1/rpc/public',
       chainId: 80001,
     },
+    polygon_zkevm_testnet: {
+      accounts,
+      url: 'https://rpc.public.zkevm-test.net',
+      chainId: 1442,
+    },
     bkc: {
       accounts,
       url: 'https://rpc.bitkubchain.io',
@@ -137,6 +142,7 @@ const config: any = {
       goerli: 'KBZ53MKPP551QTVDYSV8S961FEUC96F8QW',
       sepolia: 'KBZ53MKPP551QTVDYSV8S961FEUC96F8QW',
       polygon_mumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
+      polygon_zkevm_testnet: '3I6YVIFRN683KTT673F44T24YI5IHJHYYA',
       bkc_testnet: 'key',
       bkc: 'key',
       chiliz_spicy_testnet: 'key',
@@ -185,6 +191,14 @@ const config: any = {
         urls: {
           apiURL: 'https://api-alfajores.celoscan.io/api',
           browserURL: 'https://alfajores.celoscan.io/',
+        },
+      },
+      {
+        network: 'polygon_zkevm_testnet',
+        chainId: 1442,
+        urls: {
+          apiURL: 'https://api-testnet-zkevm.polygonscan.com/api',
+          browserURL: 'https://testnet-zkevm.polygonscan.com/',
         },
       },
       {
