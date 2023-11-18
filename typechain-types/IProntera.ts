@@ -12,7 +12,11 @@ import type {
   Signer,
   utils,
 } from "ethers";
-import type { FunctionFragment, Result } from "@ethersproject/abi";
+import type {
+  FunctionFragment,
+  Result,
+  EventFragment,
+} from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
 import type {
   TypedEventFilter,
@@ -24,13 +28,13 @@ import type {
 
 export declare namespace IProntera {
   export type UserInitializationStruct = {
-    userSecret: PromiseOrValue<BytesLike>;
+    encryptedUserSecret: PromiseOrValue<BytesLike>;
     publicKeyPrefix: PromiseOrValue<boolean>;
     publicKeyX: PromiseOrValue<BytesLike>;
   };
 
   export type UserInitializationStructOutput = [string, boolean, string] & {
-    userSecret: string;
+    encryptedUserSecret: string;
     publicKeyPrefix: boolean;
     publicKeyX: string;
   };
@@ -114,8 +118,38 @@ export interface IPronteraInterface extends utils.Interface {
     data: BytesLike
   ): Result;
 
-  events: {};
+  events: {
+    "ChatInitialized(address,address,bytes,bytes)": EventFragment;
+    "UserInitialized(address,tuple)": EventFragment;
+  };
+
+  getEvent(nameOrSignatureOrTopic: "ChatInitialized"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "UserInitialized"): EventFragment;
 }
+
+export interface ChatInitializedEventObject {
+  initializer: string;
+  peer: string;
+  callerEncryptedChatSecret: string;
+  peerEncryptedChatSecret: string;
+}
+export type ChatInitializedEvent = TypedEvent<
+  [string, string, string, string],
+  ChatInitializedEventObject
+>;
+
+export type ChatInitializedEventFilter = TypedEventFilter<ChatInitializedEvent>;
+
+export interface UserInitializedEventObject {
+  user: string;
+  init: IProntera.UserInitializationStructOutput;
+}
+export type UserInitializedEvent = TypedEvent<
+  [string, IProntera.UserInitializationStructOutput],
+  UserInitializedEventObject
+>;
+
+export type UserInitializedEventFilter = TypedEventFilter<UserInitializedEvent>;
 
 export interface IProntera extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -145,8 +179,8 @@ export interface IProntera extends BaseContract {
 
   functions: {
     getChatInitialization(
-      user: PromiseOrValue<string>,
-      reciever: PromiseOrValue<string>,
+      firstUser: PromiseOrValue<string>,
+      secondUser: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
@@ -156,14 +190,14 @@ export interface IProntera extends BaseContract {
     ): Promise<[IProntera.UserInitializationStructOutput]>;
 
     initializeChat(
-      callerSecret: PromiseOrValue<BytesLike>,
-      peerSecret: PromiseOrValue<BytesLike>,
+      callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
+      peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
       peer: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     initializeUser(
-      secret: PromiseOrValue<BytesLike>,
+      encryptedUserSecret: PromiseOrValue<BytesLike>,
       publicKeyPrefix: PromiseOrValue<boolean>,
       publicKeyX: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -182,8 +216,8 @@ export interface IProntera extends BaseContract {
   };
 
   getChatInitialization(
-    user: PromiseOrValue<string>,
-    reciever: PromiseOrValue<string>,
+    firstUser: PromiseOrValue<string>,
+    secondUser: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<string>;
 
@@ -193,14 +227,14 @@ export interface IProntera extends BaseContract {
   ): Promise<IProntera.UserInitializationStructOutput>;
 
   initializeChat(
-    callerSecret: PromiseOrValue<BytesLike>,
-    peerSecret: PromiseOrValue<BytesLike>,
+    callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
+    peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
     peer: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   initializeUser(
-    secret: PromiseOrValue<BytesLike>,
+    encryptedUserSecret: PromiseOrValue<BytesLike>,
     publicKeyPrefix: PromiseOrValue<boolean>,
     publicKeyX: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -219,8 +253,8 @@ export interface IProntera extends BaseContract {
 
   callStatic: {
     getChatInitialization(
-      user: PromiseOrValue<string>,
-      reciever: PromiseOrValue<string>,
+      firstUser: PromiseOrValue<string>,
+      secondUser: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -230,14 +264,14 @@ export interface IProntera extends BaseContract {
     ): Promise<IProntera.UserInitializationStructOutput>;
 
     initializeChat(
-      callerSecret: PromiseOrValue<BytesLike>,
-      peerSecret: PromiseOrValue<BytesLike>,
+      callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
+      peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
       peer: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     initializeUser(
-      secret: PromiseOrValue<BytesLike>,
+      encryptedUserSecret: PromiseOrValue<BytesLike>,
       publicKeyPrefix: PromiseOrValue<boolean>,
       publicKeyX: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
@@ -255,12 +289,34 @@ export interface IProntera extends BaseContract {
     ): Promise<boolean>;
   };
 
-  filters: {};
+  filters: {
+    "ChatInitialized(address,address,bytes,bytes)"(
+      initializer?: PromiseOrValue<string> | null,
+      peer?: PromiseOrValue<string> | null,
+      callerEncryptedChatSecret?: null,
+      peerEncryptedChatSecret?: null
+    ): ChatInitializedEventFilter;
+    ChatInitialized(
+      initializer?: PromiseOrValue<string> | null,
+      peer?: PromiseOrValue<string> | null,
+      callerEncryptedChatSecret?: null,
+      peerEncryptedChatSecret?: null
+    ): ChatInitializedEventFilter;
+
+    "UserInitialized(address,tuple)"(
+      user?: PromiseOrValue<string> | null,
+      init?: null
+    ): UserInitializedEventFilter;
+    UserInitialized(
+      user?: PromiseOrValue<string> | null,
+      init?: null
+    ): UserInitializedEventFilter;
+  };
 
   estimateGas: {
     getChatInitialization(
-      user: PromiseOrValue<string>,
-      reciever: PromiseOrValue<string>,
+      firstUser: PromiseOrValue<string>,
+      secondUser: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -270,14 +326,14 @@ export interface IProntera extends BaseContract {
     ): Promise<BigNumber>;
 
     initializeChat(
-      callerSecret: PromiseOrValue<BytesLike>,
-      peerSecret: PromiseOrValue<BytesLike>,
+      callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
+      peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
       peer: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     initializeUser(
-      secret: PromiseOrValue<BytesLike>,
+      encryptedUserSecret: PromiseOrValue<BytesLike>,
       publicKeyPrefix: PromiseOrValue<boolean>,
       publicKeyX: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -297,8 +353,8 @@ export interface IProntera extends BaseContract {
 
   populateTransaction: {
     getChatInitialization(
-      user: PromiseOrValue<string>,
-      reciever: PromiseOrValue<string>,
+      firstUser: PromiseOrValue<string>,
+      secondUser: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -308,14 +364,14 @@ export interface IProntera extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     initializeChat(
-      callerSecret: PromiseOrValue<BytesLike>,
-      peerSecret: PromiseOrValue<BytesLike>,
+      callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
+      peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
       peer: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     initializeUser(
-      secret: PromiseOrValue<BytesLike>,
+      encryptedUserSecret: PromiseOrValue<BytesLike>,
       publicKeyPrefix: PromiseOrValue<boolean>,
       publicKeyX: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }

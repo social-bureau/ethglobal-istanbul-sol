@@ -16,7 +16,123 @@ const _abi = [
       },
       {
         internalType: "address",
-        name: "reciever",
+        name: "peer",
+        type: "address",
+      },
+    ],
+    name: "ChatIsNotInitialized",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "peer",
+        type: "address",
+      },
+    ],
+    name: "PeerIsNotInitialized",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+    ],
+    name: "UserAlreadyInitialized",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+    ],
+    name: "UserIsNotInitialized",
+    type: "error",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "initializer",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "peer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bytes",
+        name: "callerEncryptedChatSecret",
+        type: "bytes",
+      },
+      {
+        indexed: false,
+        internalType: "bytes",
+        name: "peerEncryptedChatSecret",
+        type: "bytes",
+      },
+    ],
+    name: "ChatInitialized",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+      {
+        components: [
+          {
+            internalType: "bytes",
+            name: "encryptedUserSecret",
+            type: "bytes",
+          },
+          {
+            internalType: "bool",
+            name: "publicKeyPrefix",
+            type: "bool",
+          },
+          {
+            internalType: "bytes32",
+            name: "publicKeyX",
+            type: "bytes32",
+          },
+        ],
+        indexed: false,
+        internalType: "struct IProntera.UserInitialization",
+        name: "init",
+        type: "tuple",
+      },
+    ],
+    name: "UserInitialized",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "firstUser",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "secondUser",
         type: "address",
       },
     ],
@@ -45,7 +161,7 @@ const _abi = [
         components: [
           {
             internalType: "bytes",
-            name: "userSecret",
+            name: "encryptedUserSecret",
             type: "bytes",
           },
           {
@@ -71,12 +187,12 @@ const _abi = [
     inputs: [
       {
         internalType: "bytes",
-        name: "callerSecret",
+        name: "callerEncryptedChatSecret",
         type: "bytes",
       },
       {
         internalType: "bytes",
-        name: "peerSecret",
+        name: "peerEncryptedChatSecret",
         type: "bytes",
       },
       {
@@ -94,7 +210,7 @@ const _abi = [
     inputs: [
       {
         internalType: "bytes",
-        name: "secret",
+        name: "encryptedUserSecret",
         type: "bytes",
       },
       {
