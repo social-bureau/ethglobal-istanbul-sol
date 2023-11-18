@@ -9,7 +9,7 @@ pragma solidity ^0.8.0;
 interface IProntera {
 
     struct UserInitialization {
-        bytes userSecret;
+        bytes encryptedUserSecret;
         bool publicKeyPrefix;
         bytes32 publicKeyX;
     }
@@ -19,18 +19,18 @@ interface IProntera {
     function isChatInitialized(address initializer, address peer) external view returns (bool);
 
     function initializeUser(
-        bytes calldata secret,
+        bytes calldata encryptedUserSecret,
         bool publicKeyPrefix,
         bytes32 publicKeyX
     ) external;
 
     function initializeChat(
-        bytes calldata callerSecret,
-        bytes calldata peerSecret,
+        bytes calldata callerEncryptedChatSecret,
+        bytes calldata peerEncryptedChatSecret,
         address peer
-    ) external;
+    ) external
 
     function getUserInitialization(address user) external view returns (UserInitialization memory);
 
-    function getChatInitialization(address user, address reciever) external view returns (bytes memory);
+    function getChatInitialization(address firstUser, address secondUser) external view returns (bytes memory);
 }
