@@ -45,6 +45,7 @@ export interface PronteraInterface extends utils.Interface {
     "chatInitializations(address,address)": FunctionFragment;
     "getChatInitialization(address,address)": FunctionFragment;
     "getUserInitialization(address)": FunctionFragment;
+    "getVersion()": FunctionFragment;
     "initializeChat(bytes,bytes,address)": FunctionFragment;
     "initializeUser(bytes,bool,bytes32)": FunctionFragment;
     "isChatInitialized(address,address)": FunctionFragment;
@@ -57,6 +58,7 @@ export interface PronteraInterface extends utils.Interface {
       | "chatInitializations"
       | "getChatInitialization"
       | "getUserInitialization"
+      | "getVersion"
       | "initializeChat"
       | "initializeUser"
       | "isChatInitialized"
@@ -75,6 +77,10 @@ export interface PronteraInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "getUserInitialization",
     values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getVersion",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "initializeChat",
@@ -117,6 +123,7 @@ export interface PronteraInterface extends utils.Interface {
     functionFragment: "getUserInitialization",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "getVersion", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "initializeChat",
     data: BytesLike
@@ -215,6 +222,8 @@ export interface Prontera extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[IProntera.UserInitializationStructOutput]>;
 
+    getVersion(overrides?: CallOverrides): Promise<[string]>;
+
     initializeChat(
       callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
       peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
@@ -269,6 +278,8 @@ export interface Prontera extends BaseContract {
     overrides?: CallOverrides
   ): Promise<IProntera.UserInitializationStructOutput>;
 
+  getVersion(overrides?: CallOverrides): Promise<string>;
+
   initializeChat(
     callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
     peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
@@ -322,6 +333,8 @@ export interface Prontera extends BaseContract {
       user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<IProntera.UserInitializationStructOutput>;
+
+    getVersion(overrides?: CallOverrides): Promise<string>;
 
     initializeChat(
       callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
@@ -402,6 +415,8 @@ export interface Prontera extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    getVersion(overrides?: CallOverrides): Promise<BigNumber>;
+
     initializeChat(
       callerEncryptedChatSecret: PromiseOrValue<BytesLike>,
       peerEncryptedChatSecret: PromiseOrValue<BytesLike>,
@@ -450,6 +465,8 @@ export interface Prontera extends BaseContract {
       user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    getVersion(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     initializeChat(
       callerEncryptedChatSecret: PromiseOrValue<BytesLike>,

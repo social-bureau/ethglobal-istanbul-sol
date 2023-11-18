@@ -79,4 +79,10 @@ interface IProntera {
      * @return get a symmetric key map by firstUser => secondUser
      */
     function getChatInitialization(address firstUser, address secondUser) external view returns (bytes memory);
+
+    /**
+     * @notice get contract version
+     * @return string of version
+     */
+    function getVersion() external view returns (string memory);
 }

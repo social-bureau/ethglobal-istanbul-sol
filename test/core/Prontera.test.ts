@@ -8,6 +8,7 @@ import { randomBytes } from 'crypto';
 const { ethers } = require('hardhat');
 
 describe('Prontera', async () => {
+  const version = '1.0.0';
   let contract: Prontera;
 
   // signers
@@ -23,7 +24,14 @@ describe('Prontera', async () => {
     await contract.deployed();
   });
 
+  describe('general', async () => {
+    it('should return correct version', async () => {
+      expect(await contract.getVersion()).eq(version);
+    });
+  });
   describe('initializations', async () => {
+    it('should initialize alice', async () => {});
+
     it('should initialize alice', async () => {
       expect(await contract.isUserInitialized(alice.address)).to.eq(false);
 

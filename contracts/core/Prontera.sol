@@ -10,6 +10,8 @@ import "../interfaces/IProntera.sol";
  */
 contract Prontera is IProntera {
 
+    string private version = '1.0.0';
+
     /// @notice Mapping of user to their initialization object
     mapping(address => UserInitialization) public userInitializations;
 
@@ -99,5 +101,13 @@ contract Prontera is IProntera {
      */
     function getChatInitialization(address firstUser, address secondUser) external view returns (bytes memory){
         return chatInitializations[firstUser][secondUser];
+    }
+
+    /**
+     * @notice get contract version
+     * @return string of version
+     */
+    function getVersion() external view returns (string memory){
+        return version;
     }
 }
