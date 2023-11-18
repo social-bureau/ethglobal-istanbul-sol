@@ -8,6 +8,14 @@ pragma solidity ^0.8.0;
  */
 interface IProntera {
 
+    error UserAlreadyInitialized(address user);
+    error UserIsNotInitialized(address user);
+    error PeerIsNotInitialized(address peer);
+    error ChatIsNotInitialized(address user, address peer);
+
+    event UserInitialized(address indexed user, UserInitialization init);
+    event ChatInitialized(address indexed initializer, address indexed peer, bytes callerEncryptedChatSecret, bytes peerEncryptedChatSecret);
+
     struct UserInitialization {
         bytes encryptedUserSecret;
         bool publicKeyPrefix;
