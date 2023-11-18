@@ -1,9 +1,11 @@
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { Prontera } from '../../typechain-types';
-import { ethers } from 'hardhat';
 import '@nomicfoundation/hardhat-chai-matchers';
 import { expect } from 'chai';
-import { CryptoECIES, generateSecret } from '../../libs/crypto';
+import { CryptoAES256, CryptoECIES, generateSecret } from '../../libs/crypto';
+import { randomBytes } from 'crypto';
+
+const { ethers } = require('hardhat');
 
 describe('Prontera', async () => {
   let contract: Prontera;
@@ -17,7 +19,6 @@ describe('Prontera', async () => {
   before(async () => {
     const factory = await ethers.getContractFactory('Prontera');
     [owner, alice, bob] = await ethers.getSigners();
-    // @ts-ignore
     contract = await factory.deploy();
     await contract.deployed();
   });
@@ -104,6 +105,72 @@ describe('Prontera', async () => {
         .withArgs(alice.address, bob.address, chatSecretEncryptedForAlice, chatSecretEncryptedForBob);
 
       expect(await contract.isChatInitialized(alice.address, bob.address)).to.eq(true);
+    });
+
+    describe('messaging', async () => {
+      let message: Buffer;
+      let cypherText: Buffer;
+      before(async () => {
+        message = randomBytes(32);
+      });
+
+      it('should allow alice to send an encrypted message to bob', async () => {
+        // alice gets the encrypted chat secret from chatInitializations
+        const chatSecretEncryptedForAlice = Buffer.from(
+          (await contract.chatInitializations(alice.address, bob.address)).slice(2),
+          'hex',
+        );
+
+        // alice gets the encrypted user secret necessary to create the decryptor of the chat secret
+        const aliceInit = await contract.connect(alice).userInitializations(alice.address);
+        const [aliceSecret, _, __] = [
+          aliceInit[0].slice(2), // omit 0x
+          aliceInit[1] ? '02' : '03', // boolean to prefix
+          aliceInit[2].slice(2), // omit 0x
+        ];
+        // NOTE: alice also decrypts the user secret with her metamask key, but we do not do it in this test.
+        // alice decrypts the chat secret
+        const aliceBuffer = Buffer.from(aliceSecret, 'hex'); // TODO: refactor
+        const eciesScheme = new CryptoECIES(aliceBuffer);
+        const chatSecret = eciesScheme.decrypt(chatSecretEncryptedForAlice);
+
+        // alice encrypts the message
+        const aes256Scheme = new CryptoAES256(chatSecret);
+        cypherText = aes256Scheme.encrypt(message);
+
+        const plaintext = aes256Scheme.decrypt(cypherText);
+        expect(plaintext).to.eql(message);
+      });
+
+      it('should allow bob to decrypt his encrypted message', async () => {
+        const ciphertext = cypherText;
+
+        // bob gets the encrypted chat secret from chatInitializations
+        const chatSecretEncryptedForBob = Buffer.from(
+          (await contract.chatInitializations(bob.address, alice.address)).slice(2),
+          'hex',
+        );
+
+        // bob gets the encrypted user secret necessary to create the decryptor of the chat secret
+        const bobInit = await contract.connect(bob).userInitializations(bob.address);
+        const [bobSecret, _, __] = [
+          bobInit[0].slice(2), // omit 0x
+          bobInit[1] ? '02' : '03', // boolean to prefix
+          bobInit[2].slice(2), // omit 0x
+        ];
+
+        // NOTE: bob also decrypts the user secret with his metamask key, but we do not do it in this test.
+        // bob decrypts the chat secret
+        const bobBuffer = Buffer.from(bobSecret, 'hex'); // TODO: refactor
+        const eciesScheme = new CryptoECIES(bobBuffer);
+        const chatSecret = eciesScheme.decrypt(chatSecretEncryptedForBob);
+
+        // bob encrypts the message
+        const aes256Scheme = new CryptoAES256(chatSecret);
+        const plaintext = aes256Scheme.decrypt(ciphertext);
+
+        expect(plaintext).to.eql(message);
+      });
     });
   });
 });
