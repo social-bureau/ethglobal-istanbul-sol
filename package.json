@@ -13,6 +13,7 @@
     "deploy:chiliz_spicy_testnet": "hardhat --network chiliz_spicy_testnet deploy",
     "deploy:goerli": "hardhat --network goerli deploy",
     "deploy:linea_goerli": "hardhat --network linea_goerli deploy",
+    "deploy:mantle_testnet": "hardhat --network mantle_testnet deploy",
     "deploy:polygon_mumbai": "hardhat --network polygon_mumbai deploy",
     "deploy:sepolia": "hardhat --network sepolia deploy",
     "flatten": "hardhat flatten:to-file",
@@ -34,6 +35,7 @@
     "verify:chiliz_spicy_testnet": "hardhat run scripts/verify.js --network chiliz_spicy_testnet",
     "verify:goerli": "hardhat run scripts/verify.js --network goerli",
     "verify:linea_goerli": "hardhat run scripts/verify.js --network linea_goerli",
+    "verify:mantle_testnet": "hardhat run scripts/verify.js --network mantle_testnet",
     "verify:polygon_mumbai": "hardhat run scripts/verify.js --network polygon_mumbai",
     "verify:sepolia": "hardhat run scripts/verify.js --network sepolia"
   },

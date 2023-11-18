@@ -121,6 +121,11 @@ const config: any = {
       accounts: accounts,
       chainId: 88882,
     },
+    mantle_testnet: {
+      url: 'https://rpc.testnet.mantle.xyz/',
+      accounts: accounts,
+      chainId: 5001,
+    },
   },
   etherscan: {
     apiKey: {
@@ -133,6 +138,7 @@ const config: any = {
       polygonMumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
       linea_goerli: 'BE73V3WIFAP2WP7SQBHV95AQBMN1URH4JP',
       alfajores: 'PQ6KHZ9W2YZ7HI3KW651DIEMWS2HUEIXYN',
+      mantle_testnet: 'key',
     },
     customChains: [
       {
@@ -181,6 +187,14 @@ const config: any = {
         urls: {
           apiURL: 'https://spicy-explorer.chiliz.com/api',
           browserURL: 'https://spicy-explorer.chiliz.com/',
+        },
+      },
+      {
+        network: 'mantle_testnet',
+        chainId: 5001,
+        urls: {
+          apiURL: 'https://rpc.testnet.mantle.xyz/api',
+          browserURL: 'https://rpc.testnet.mantle.xyz/',
         },
       },
     ],
