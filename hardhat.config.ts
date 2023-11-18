@@ -106,6 +106,11 @@ const config: any = {
       accounts: accounts,
       chainId: 167005,
     },
+    linea_goerli: {
+      url: 'https://rpc.goerli.linea.build',
+      accounts: accounts,
+      chainId: 59140,
+    },
   },
   etherscan: {
     apiKey: {
@@ -115,6 +120,7 @@ const config: any = {
       bkc_testnet: 'key',
       bkc: 'key',
       polygonMumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
+      linea_goerli: 'BE73V3WIFAP2WP7SQBHV95AQBMN1URH4JP',
     },
     customChains: [
       {
@@ -139,6 +145,14 @@ const config: any = {
         urls: {
           apiURL: 'https://explorer.test.taiko.xyz/api',
           browserURL: 'https://explorer.test.taiko.xyz',
+        },
+      },
+      {
+        network: 'linea_goerli',
+        chainId: 59140,
+        urls: {
+          apiURL: 'https://api-testnet.lineascan.build/api',
+          browserURL: 'https://goerli.lineascan.build',
         },
       },
     ],

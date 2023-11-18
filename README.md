@@ -16,7 +16,8 @@ The implemented version of the key keeper.
 
 ## Deployed Contracts
 
-| chain   | name     | contract address                                                                                                                   |
-|---------|----------|------------------------------------------------------------------------------------------------------------------------------------|
-| Goerli  | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://goerli.etherscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)  |
-| Sepolia | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://sepolia.etherscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code) |
+| chain        | name     | contract address                                                                                                                     |
+|--------------|----------|--------------------------------------------------------------------------------------------------------------------------------------|
+| Goerli       | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://goerli.etherscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)    |
+| Sepolia      | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://sepolia.etherscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)   |
+| Linea Goerli | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://goerli.lineascan.build/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code) |
