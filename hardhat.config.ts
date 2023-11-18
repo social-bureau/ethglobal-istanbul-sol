@@ -75,6 +75,16 @@ const config: any = {
     localhost: {
       accounts,
     },
+    arbitrum_stylus: {
+      accounts,
+      url: 'https://stylus-testnet.arbitrum.io/rpc',
+      chainId: 23011913,
+    },
+    base_goerli: {
+      accounts,
+      url: 'https://goerli.base.org',
+      chainId: 84531,
+    },
     goerli: {
       accounts,
       url: 'https://eth-goerli.public.blastapi.io',
@@ -144,6 +154,8 @@ const config: any = {
   },
   etherscan: {
     apiKey: {
+      arbitrum_stylus: 'key',
+      base_goerli: 'HWIGT6I8F9PZHQXKWM3WM57P4TFQC1ISWS',
       goerli: 'KBZ53MKPP551QTVDYSV8S961FEUC96F8QW',
       sepolia: 'KBZ53MKPP551QTVDYSV8S961FEUC96F8QW',
       polygon_mumbai: 'FPHU3AFWJD2M3ECIKN61FPG1CIMN3IWF46',
@@ -159,6 +171,22 @@ const config: any = {
       scroll_sepolia: 'H2W8PHGFWI3S449NVY11MPTBTYFI9GKEWQ',
     },
     customChains: [
+      {
+        network: 'arbitrum_stylus',
+        chainId: 23011913,
+        urls: {
+          apiURL: 'https://stylus-testnet-explorer.arbitrum.io/api',
+          browserURL: 'https://stylus-testnet-explorer.arbitrum.io/',
+        },
+      },
+      {
+        network: 'base_goerli',
+        chainId: 84531,
+        urls: {
+          apiURL: 'https://api-goerli.basescan.org/api',
+          browserURL: 'https://goerli.basescan.org/',
+        },
+      },
       {
         network: 'bkc_testnet',
         chainId: 25925,

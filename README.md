@@ -19,6 +19,8 @@ The implemented version of the key keeper.
 | chain                    | name     | contract address                                                                                                                                            |
 |--------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alfajores (Celo Testnet) | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://alfajores.celoscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                         |
+| Arbitrum Stylus          | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://stylus-testnet-explorer.arbitrum.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)           |
+| Base Goerli              | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://goerli.basescan.org/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                           |
 | Chiliz Spicy Testnet     | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://spicy-explorer.chiliz.com/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                     |
 | Gnosis Chiado Testnet    | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://gnosis-chiado.blockscout.com/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A?tab=contract)          |
 | Goerli                   | Prontera | [0xf7a126aDe9268742409BBe4B1f79243c6430605A](https://goerli.etherscan.io/address/0xf7a126aDe9268742409BBe4B1f79243c6430605A#code)                           |
