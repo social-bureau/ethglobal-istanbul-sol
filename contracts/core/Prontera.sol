@@ -9,6 +9,13 @@ import "../interfaces/IProntera.sol";
  * @notice version 1.0
  */
 contract Prontera is IProntera {
+
+    /// @notice Mapping of user to their initialization object
+    mapping(address => UserInitialization) public userInitializations;
+
+    /// @notice A shared secret between two users, encrypted by the public key of first user
+    mapping(address => mapping(address => bytes)) public chatInitializations;
+
     constructor(){
 
     }
@@ -19,7 +26,8 @@ contract Prontera is IProntera {
      * @return initialized as a boolean
      */
     function isUserInitialized(address user) external view returns (bool){
-        return true;
+        return !(userInitializations[user].encryptedUserSecret.length == 0 &&
+            userInitializations[user].publicKeyX == bytes32(0));
     }
 
     /**
@@ -29,7 +37,7 @@ contract Prontera is IProntera {
      * @return initialized as a boolean
      */
     function isChatInitialized(address initializer, address peer) external view returns (bool){
-        return false;
+        return !(chatInitializations[initializer][peer].length == 0 && chatInitializations[peer][initializer].length == 0);
     }
 
     /**
@@ -45,7 +53,11 @@ contract Prontera is IProntera {
         bool publicKeyPrefix,
         bytes32 publicKeyX
     ) external {
-
+        if (isUserInitialized(msg.sender)) {
+            revert UserAlreadyInitialized(msg.sender);
+        }
+        userInitializations[msg.sender] = UserInitialization(encryptedUserSecret, publicKeyPrefix, publicKeyX);
+        emit UserInitialized(msg.sender, userInitializations[msg.sender]);
     }
 
     /**
@@ -61,7 +73,7 @@ contract Prontera is IProntera {
         bytes calldata peerEncryptedChatSecret,
         address peer
     ) external {
-
+        // TODO: implement this by checking users init or not then store encrypted chat secret
     }
 
     /**
@@ -69,7 +81,9 @@ contract Prontera is IProntera {
      * @param user address to query
      * @return data as UserInitialization struct
      */
-    function getUserInitialization(address user) external view returns (UserInitialization memory){}
+    function getUserInitialization(address user) external view returns (UserInitialization memory){
+        return userInitializations[user];
+    }
 
     /**
      * @notice get chat initialized information, shared secret between two users, encrypted by the public key of initializer user
@@ -78,6 +92,6 @@ contract Prontera is IProntera {
      * @return get a symmetric key map by firstUser => secondUser
      */
     function getChatInitialization(address firstUser, address secondUser) external view returns (bytes memory){
-        return new bytes(0);
+        return chatInitializations[firstUser][secondUser];
     }
 }
