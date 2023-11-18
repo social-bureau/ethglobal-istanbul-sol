@@ -42,24 +42,32 @@ export declare namespace IProntera {
 
 export interface PronteraInterface extends utils.Interface {
   functions: {
+    "chatInitializations(address,address)": FunctionFragment;
     "getChatInitialization(address,address)": FunctionFragment;
     "getUserInitialization(address)": FunctionFragment;
     "initializeChat(bytes,bytes,address)": FunctionFragment;
     "initializeUser(bytes,bool,bytes32)": FunctionFragment;
     "isChatInitialized(address,address)": FunctionFragment;
     "isUserInitialized(address)": FunctionFragment;
+    "userInitializations(address)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "chatInitializations"
       | "getChatInitialization"
       | "getUserInitialization"
       | "initializeChat"
       | "initializeUser"
       | "isChatInitialized"
       | "isUserInitialized"
+      | "userInitializations"
   ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "chatInitializations",
+    values: [PromiseOrValue<string>, PromiseOrValue<string>]
+  ): string;
   encodeFunctionData(
     functionFragment: "getChatInitialization",
     values: [PromiseOrValue<string>, PromiseOrValue<string>]
@@ -92,7 +100,15 @@ export interface PronteraInterface extends utils.Interface {
     functionFragment: "isUserInitialized",
     values: [PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(
+    functionFragment: "userInitializations",
+    values: [PromiseOrValue<string>]
+  ): string;
 
+  decodeFunctionResult(
+    functionFragment: "chatInitializations",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "getChatInitialization",
     data: BytesLike
@@ -115,6 +131,10 @@ export interface PronteraInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "isUserInitialized",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "userInitializations",
     data: BytesLike
   ): Result;
 
@@ -178,6 +198,12 @@ export interface Prontera extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    chatInitializations(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
     getChatInitialization(
       firstUser: PromiseOrValue<string>,
       secondUser: PromiseOrValue<string>,
@@ -213,7 +239,24 @@ export interface Prontera extends BaseContract {
       user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
+
+    userInitializations(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [string, boolean, string] & {
+        encryptedUserSecret: string;
+        publicKeyPrefix: boolean;
+        publicKeyX: string;
+      }
+    >;
   };
+
+  chatInitializations(
+    arg0: PromiseOrValue<string>,
+    arg1: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<string>;
 
   getChatInitialization(
     firstUser: PromiseOrValue<string>,
@@ -251,7 +294,24 @@ export interface Prontera extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  userInitializations(
+    arg0: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<
+    [string, boolean, string] & {
+      encryptedUserSecret: string;
+      publicKeyPrefix: boolean;
+      publicKeyX: string;
+    }
+  >;
+
   callStatic: {
+    chatInitializations(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
     getChatInitialization(
       firstUser: PromiseOrValue<string>,
       secondUser: PromiseOrValue<string>,
@@ -287,6 +347,17 @@ export interface Prontera extends BaseContract {
       user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    userInitializations(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [string, boolean, string] & {
+        encryptedUserSecret: string;
+        publicKeyPrefix: boolean;
+        publicKeyX: string;
+      }
+    >;
   };
 
   filters: {
@@ -314,6 +385,12 @@ export interface Prontera extends BaseContract {
   };
 
   estimateGas: {
+    chatInitializations(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     getChatInitialization(
       firstUser: PromiseOrValue<string>,
       secondUser: PromiseOrValue<string>,
@@ -347,11 +424,22 @@ export interface Prontera extends BaseContract {
 
     isUserInitialized(
       user: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    userInitializations(
+      arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    chatInitializations(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     getChatInitialization(
       firstUser: PromiseOrValue<string>,
       secondUser: PromiseOrValue<string>,
@@ -385,6 +473,11 @@ export interface Prontera extends BaseContract {
 
     isUserInitialized(
       user: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    userInitializations(
+      arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

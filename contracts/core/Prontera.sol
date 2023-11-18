@@ -16,16 +16,14 @@ contract Prontera is IProntera {
     /// @notice A shared secret between two users, encrypted by the public key of first user
     mapping(address => mapping(address => bytes)) public chatInitializations;
 
-    constructor(){
-
-    }
+    constructor(){}
 
     /**
      * @notice check if user is already initialized or not
      * @param user address to query
      * @return initialized as a boolean
      */
-    function isUserInitialized(address user) external view returns (bool){
+    function isUserInitialized(address user) public view returns (bool){
         return !(userInitializations[user].encryptedUserSecret.length == 0 &&
             userInitializations[user].publicKeyX == bytes32(0));
     }
@@ -36,7 +34,7 @@ contract Prontera is IProntera {
      * @param peer address to query
      * @return initialized as a boolean
      */
-    function isChatInitialized(address initializer, address peer) external view returns (bool){
+    function isChatInitialized(address initializer, address peer) public view returns (bool){
         return !(chatInitializations[initializer][peer].length == 0 && chatInitializations[peer][initializer].length == 0);
     }
 
@@ -73,7 +71,15 @@ contract Prontera is IProntera {
         bytes calldata peerEncryptedChatSecret,
         address peer
     ) external {
-        // TODO: implement this by checking users init or not then store encrypted chat secret
+        if (!isUserInitialized(msg.sender)) {
+            revert UserIsNotInitialized(msg.sender);
+        }
+        if (!isUserInitialized(peer)) {
+            revert PeerIsNotInitialized(peer);
+        }
+        chatInitializations[msg.sender][peer] = callerEncryptedChatSecret;
+        chatInitializations[peer][msg.sender] = peerEncryptedChatSecret;
+        emit ChatInitialized(msg.sender, peer, callerEncryptedChatSecret, peerEncryptedChatSecret);
     }
 
     /**
