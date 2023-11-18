@@ -83,7 +83,7 @@ contract Prontera is IProntera {
     }
 
     /**
-     * @notice get user initialized information
+     * @notice get user initialized information.
      * @param user address to query
      * @return data as UserInitialization struct
      */
