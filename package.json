@@ -17,6 +17,7 @@
     "deploy:mantle_testnet": "hardhat --network mantle_testnet deploy",
     "deploy:polygon_mumbai": "hardhat --network polygon_mumbai deploy",
     "deploy:polygon_zkevm_testnet": "hardhat --network polygon_zkevm_testnet deploy",
+    "deploy:scroll_sepolia": "hardhat --network scroll_sepolia deploy",
     "deploy:sepolia": "hardhat --network sepolia deploy",
     "flatten": "hardhat flatten:to-file",
     "flatten-all": "hardhat flatten:all-files",
@@ -41,6 +42,7 @@
     "verify:mantle_testnet": "hardhat run scripts/verify.js --network mantle_testnet",
     "verify:polygon_mumbai": "hardhat run scripts/verify.js --network polygon_mumbai",
     "verify:polygon_zkevm_testnet": "hardhat run scripts/verify.js --network polygon_zkevm_testnet",
+    "verify:scroll_sepolia": "hardhat run scripts/verify.js --network scroll_sepolia",
     "verify:sepolia": "hardhat run scripts/verify.js --network sepolia"
   },
   "repository": {

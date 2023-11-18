@@ -136,6 +136,11 @@ const config: any = {
       accounts: accounts,
       chainId: 5001,
     },
+    scroll_sepolia: {
+      url: 'https://sepolia-rpc.scroll.io/',
+      accounts: accounts,
+      chainId: 534351,
+    },
   },
   etherscan: {
     apiKey: {
@@ -151,6 +156,7 @@ const config: any = {
       alfajores: 'PQ6KHZ9W2YZ7HI3KW651DIEMWS2HUEIXYN',
       mantle_testnet: 'key',
       chiado: '46d152e9-54c0-4a4b-86cd-3ffb7c4205ab',
+      scroll_sepolia: 'H2W8PHGFWI3S449NVY11MPTBTYFI9GKEWQ',
     },
     customChains: [
       {
@@ -223,6 +229,15 @@ const config: any = {
         urls: {
           apiURL: 'https://rpc.testnet.mantle.xyz/api',
           browserURL: 'https://rpc.testnet.mantle.xyz/',
+        },
+      },
+      {
+        network: 'scroll_sepolia',
+        chainId: 534351,
+        urls: {
+          //apiURL: 'https://sepolia-blockscout.scroll.io/api',
+          apiURL: 'https://api-sepolia.scrollscan.com/api',
+          browserURL: 'https://sepolia.scrollscan.dev/',
         },
       },
     ],

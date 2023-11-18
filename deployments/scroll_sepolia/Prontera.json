@@ -1,0 +1,566 @@
+{
+  "address": "0xf7a126aDe9268742409BBe4B1f79243c6430605A",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "peer",
+          "type": "address"
+        }
+      ],
+      "name": "ChatIsNotInitialized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "peer",
+          "type": "address"
+        }
+      ],
+      "name": "PeerIsNotInitialized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "UserAlreadyInitialized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "UserIsNotInitialized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "initializer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "peer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "callerEncryptedChatSecret",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "peerEncryptedChatSecret",
+          "type": "bytes"
+        }
+      ],
+      "name": "ChatInitialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bytes",
+              "name": "encryptedUserSecret",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bool",
+              "name": "publicKeyPrefix",
+              "type": "bool"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "publicKeyX",
+              "type": "bytes32"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IProntera.UserInitialization",
+          "name": "init",
+          "type": "tuple"
+        }
+      ],
+      "name": "UserInitialized",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "chatInitializations",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "firstUser",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "secondUser",
+          "type": "address"
+        }
+      ],
+      "name": "getChatInitialization",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserInitialization",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes",
+              "name": "encryptedUserSecret",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bool",
+              "name": "publicKeyPrefix",
+              "type": "bool"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "publicKeyX",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct IProntera.UserInitialization",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getVersion",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "callerEncryptedChatSecret",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "peerEncryptedChatSecret",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "peer",
+          "type": "address"
+        }
+      ],
+      "name": "initializeChat",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "encryptedUserSecret",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "publicKeyPrefix",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "publicKeyX",
+          "type": "bytes32"
+        }
+      ],
+      "name": "initializeUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "initializer",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "peer",
+          "type": "address"
+        }
+      ],
+      "name": "isChatInitialized",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "isUserInitialized",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userInitializations",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "encryptedUserSecret",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "publicKeyPrefix",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "publicKeyX",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xc09d1899edf062d1c787127e6b338eaa018146c66751975e436bbd330e32dde1",
+  "receipt": {
+    "to": null,
+    "from": "0x230298E2a511dED8bF1882D27D4d6B3ece558ce8",
+    "contractAddress": "0xf7a126aDe9268742409BBe4B1f79243c6430605A",
+    "transactionIndex": 1,
+    "gasUsed": "800032",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x2f80a19ed9e432f78ab297aee6264af441772600a94ef21c8e4facd0f25ea84b",
+    "transactionHash": "0xc09d1899edf062d1c787127e6b338eaa018146c66751975e436bbd330e32dde1",
+    "logs": [],
+    "blockNumber": 2303022,
+    "cumulativeGasUsed": "1053023",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "ab9bb4395a93b9dd42894473840d8f3d",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.14+commit.80d49f37\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"peer\",\"type\":\"address\"}],\"name\":\"ChatIsNotInitialized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"peer\",\"type\":\"address\"}],\"name\":\"PeerIsNotInitialized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"UserAlreadyInitialized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"UserIsNotInitialized\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"initializer\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"peer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"callerEncryptedChatSecret\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"peerEncryptedChatSecret\",\"type\":\"bytes\"}],\"name\":\"ChatInitialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"bytes\",\"name\":\"encryptedUserSecret\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"publicKeyPrefix\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"publicKeyX\",\"type\":\"bytes32\"}],\"indexed\":false,\"internalType\":\"struct IProntera.UserInitialization\",\"name\":\"init\",\"type\":\"tuple\"}],\"name\":\"UserInitialized\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"chatInitializations\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"firstUser\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"secondUser\",\"type\":\"address\"}],\"name\":\"getChatInitialization\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserInitialization\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes\",\"name\":\"encryptedUserSecret\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"publicKeyPrefix\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"publicKeyX\",\"type\":\"bytes32\"}],\"internalType\":\"struct IProntera.UserInitialization\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"callerEncryptedChatSecret\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"peerEncryptedChatSecret\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"peer\",\"type\":\"address\"}],\"name\":\"initializeChat\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"encryptedUserSecret\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"publicKeyPrefix\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"publicKeyX\",\"type\":\"bytes32\"}],\"name\":\"initializeUser\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"initializer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"peer\",\"type\":\"address\"}],\"name\":\"isChatInitialized\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"isUserInitialized\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userInitializations\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"encryptedUserSecret\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"publicKeyPrefix\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"publicKeyX\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Roongroj\",\"kind\":\"dev\",\"methods\":{\"getChatInitialization(address,address)\":{\"params\":{\"firstUser\":\"address to query\",\"secondUser\":\"address to query\"},\"returns\":{\"_0\":\"get a symmetric key map by firstUser => secondUser\"}},\"getUserInitialization(address)\":{\"params\":{\"user\":\"address to query\"},\"returns\":{\"_0\":\"data as UserInitialization struct\"}},\"getVersion()\":{\"returns\":{\"_0\":\"string of version\"}},\"initializeChat(bytes,bytes,address)\":{\"details\":\"Both users must be initialized\",\"params\":{\"callerEncryptedChatSecret\":\"Symmetric key, encrypted by the msg.sender's public key\",\"peer\":\"address of the peer\",\"peerEncryptedChatSecret\":\"Symmetric key, encrypted by the peer's public key\"}},\"initializeUser(bytes,bool,bytes32)\":{\"params\":{\"encryptedUserSecret\":\"user secret to generate key-pair for the chatting application. it is encrypted by the MetaMask public key\",\"publicKeyPrefix\":\"prefix of the compressed key stored as a boolean (0x02: true, 0x03: false)\",\"publicKeyX\":\"32-byte X-coordinate of the compressed key\"}},\"isChatInitialized(address,address)\":{\"params\":{\"initializer\":\"address to query\",\"peer\":\"address to query\"},\"returns\":{\"_0\":\"initialized as a boolean\"}},\"isUserInitialized(address)\":{\"params\":{\"user\":\"address to query\"},\"returns\":{\"_0\":\"initialized as a boolean\"}}},\"title\":\"IProntera: key keeper for chatting\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"chatInitializations(address,address)\":{\"notice\":\"A shared secret between two users, encrypted by the public key of first user\"},\"getChatInitialization(address,address)\":{\"notice\":\"get chat initialized information, shared secret between two users, encrypted by the public key of initializer user\"},\"getUserInitialization(address)\":{\"notice\":\"get user initialized information.\"},\"getVersion()\":{\"notice\":\"get contract version\"},\"initializeChat(bytes,bytes,address)\":{\"notice\":\"initializes a chatting session between two users: msg.sender and a given peer. A symmetric key is encrypted with both public keys once and stored for each\"},\"initializeUser(bytes,bool,bytes32)\":{\"notice\":\"initialize user, some kind of registering process, which allows two things: - user will be able to generate their own key on later logins, by retrieving the encrypted key-gen input and decrypt with their MetaMask - other users will be able to encrypt messages using this users public key\"},\"isChatInitialized(address,address)\":{\"notice\":\"check if initializer and user is already initialized or not\"},\"isUserInitialized(address)\":{\"notice\":\"check if user is already initialized or not\"},\"userInitializations(address)\":{\"notice\":\"Mapping of user to their initialization object\"}},\"notice\":\"version 1.0\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/core/Prontera.sol\":\"Prontera\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/core/Prontera.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\nimport \\\"../interfaces/IProntera.sol\\\";\\n\\n/**\\n * @title IProntera: key keeper for chatting\\n * @author Roongroj\\n * @notice version 1.0\\n */\\ncontract Prontera is IProntera {\\n\\n    string private version = '1.0.0';\\n\\n    /// @notice Mapping of user to their initialization object\\n    mapping(address => UserInitialization) public userInitializations;\\n\\n    /// @notice A shared secret between two users, encrypted by the public key of first user\\n    mapping(address => mapping(address => bytes)) public chatInitializations;\\n\\n    constructor(){}\\n\\n    /**\\n     * @notice check if user is already initialized or not\\n     * @param user address to query\\n     * @return initialized as a boolean\\n     */\\n    function isUserInitialized(address user) public view returns (bool){\\n        return !(userInitializations[user].encryptedUserSecret.length == 0 &&\\n            userInitializations[user].publicKeyX == bytes32(0));\\n    }\\n\\n    /**\\n     * @notice check if initializer and user is already initialized or not\\n     * @param initializer address to query\\n     * @param peer address to query\\n     * @return initialized as a boolean\\n     */\\n    function isChatInitialized(address initializer, address peer) public view returns (bool){\\n        return !(chatInitializations[initializer][peer].length == 0 && chatInitializations[peer][initializer].length == 0);\\n    }\\n\\n    /**\\n     * @notice initialize user, some kind of registering process, which allows two things:\\n     * - user will be able to generate their own key on later logins, by retrieving the encrypted key-gen input and decrypt with their MetaMask\\n     * - other users will be able to encrypt messages using this users public key\\n     * @param encryptedUserSecret user secret to generate key-pair for the chatting application. it is encrypted by the MetaMask public key\\n     * @param publicKeyPrefix prefix of the compressed key stored as a boolean (0x02: true, 0x03: false)\\n     * @param publicKeyX 32-byte X-coordinate of the compressed key\\n     */\\n    function initializeUser(\\n        bytes calldata encryptedUserSecret,\\n        bool publicKeyPrefix,\\n        bytes32 publicKeyX\\n    ) external {\\n        if (isUserInitialized(msg.sender)) {\\n            revert UserAlreadyInitialized(msg.sender);\\n        }\\n        userInitializations[msg.sender] = UserInitialization(encryptedUserSecret, publicKeyPrefix, publicKeyX);\\n        emit UserInitialized(msg.sender, userInitializations[msg.sender]);\\n    }\\n\\n    /**\\n     * @notice initializes a chatting session between two users: msg.sender and a given peer.\\n     * A symmetric key is encrypted with both public keys once and stored for each\\n     * @dev Both users must be initialized\\n     * @param callerEncryptedChatSecret Symmetric key, encrypted by the msg.sender's public key\\n     * @param peerEncryptedChatSecret Symmetric key, encrypted by the peer's public key\\n     * @param peer address of the peer\\n     */\\n    function initializeChat(\\n        bytes calldata callerEncryptedChatSecret,\\n        bytes calldata peerEncryptedChatSecret,\\n        address peer\\n    ) external {\\n        if (!isUserInitialized(msg.sender)) {\\n            revert UserIsNotInitialized(msg.sender);\\n        }\\n        if (!isUserInitialized(peer)) {\\n            revert PeerIsNotInitialized(peer);\\n        }\\n        chatInitializations[msg.sender][peer] = callerEncryptedChatSecret;\\n        chatInitializations[peer][msg.sender] = peerEncryptedChatSecret;\\n        emit ChatInitialized(msg.sender, peer, callerEncryptedChatSecret, peerEncryptedChatSecret);\\n    }\\n\\n    /**\\n     * @notice get user initialized information.\\n     * @param user address to query\\n     * @return data as UserInitialization struct\\n     */\\n    function getUserInitialization(address user) external view returns (UserInitialization memory){\\n        return userInitializations[user];\\n    }\\n\\n    /**\\n     * @notice get chat initialized information, shared secret between two users, encrypted by the public key of initializer user\\n     * @param firstUser address to query\\n     * @param secondUser address to query\\n     * @return get a symmetric key map by firstUser => secondUser\\n     */\\n    function getChatInitialization(address firstUser, address secondUser) external view returns (bytes memory){\\n        return chatInitializations[firstUser][secondUser];\\n    }\\n\\n    /**\\n     * @notice get contract version\\n     * @return string of version\\n     */\\n    function getVersion() external view returns (string memory){\\n        return version;\\n    }\\n}\\n\",\"keccak256\":\"0xc170cdf8795e8167012e03ada10e4d34850bdb73141e86d8074bd56e2b636275\",\"license\":\"MIT\"},\"contracts/interfaces/IProntera.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title IProntera: key keeper for chatting\\n * @author Roongroj\\n * @notice version 1.0\\n */\\ninterface IProntera {\\n\\n    error UserAlreadyInitialized(address user);\\n    error UserIsNotInitialized(address user);\\n    error PeerIsNotInitialized(address peer);\\n    error ChatIsNotInitialized(address user, address peer);\\n\\n    event UserInitialized(address indexed user, UserInitialization init);\\n    event ChatInitialized(address indexed initializer, address indexed peer, bytes callerEncryptedChatSecret, bytes peerEncryptedChatSecret);\\n\\n    struct UserInitialization {\\n        bytes encryptedUserSecret;\\n        bool publicKeyPrefix;\\n        bytes32 publicKeyX;\\n    }\\n\\n    /**\\n     * @notice check if user is already initialized or not\\n     * @param user address to query\\n     * @return initialized as a boolean\\n     */\\n    function isUserInitialized(address user) external view returns (bool);\\n\\n    /**\\n     * @notice check if initializer and user is already initialized or not\\n     * @param initializer address to query\\n     * @param peer address to query\\n     * @return initialized as a boolean\\n     */\\n    function isChatInitialized(address initializer, address peer) external view returns (bool);\\n\\n    /**\\n     * @notice initialize user, some kind of registering process, which allows two things:\\n     * - user will be able to generate their own key on later logins, by retrieving the encrypted key-gen input and decrypt with their MetaMask\\n     * - other users will be able to encrypt messages using this users public key\\n     * @param encryptedUserSecret user secret to generate key-pair for the chatting application. it is encrypted by the MetaMask public key\\n     * @param publicKeyPrefix prefix of the compressed key stored as a boolean (0x02: true, 0x03: false)\\n     * @param publicKeyX 32-byte X-coordinate of the compressed key\\n     */\\n    function initializeUser(\\n        bytes calldata encryptedUserSecret,\\n        bool publicKeyPrefix,\\n        bytes32 publicKeyX\\n    ) external;\\n\\n    /**\\n     * @notice initializes a chatting session between two users: msg.sender and a given peer.\\n     * A symmetric key is encrypted with both public keys once and stored for each\\n     * @dev Both users must be initialized\\n     * @param callerEncryptedChatSecret Symmetric key, encrypted by the msg.sender's public key\\n     * @param peerEncryptedChatSecret Symmetric key, encrypted by the peer's public key\\n     * @param peer address of the peer\\n     */\\n    function initializeChat(\\n        bytes calldata callerEncryptedChatSecret,\\n        bytes calldata peerEncryptedChatSecret,\\n        address peer\\n    ) external;\\n\\n    /**\\n     * @notice get user initialized information\\n     * @param user address to query\\n     * @return data as UserInitialization struct\\n     */\\n    function getUserInitialization(address user) external view returns (UserInitialization memory);\\n\\n    /**\\n     * @notice get chat initialized information, shared secret between two users, encrypted by the public key of initializer user\\n     * @param firstUser address to query\\n     * @param secondUser address to query\\n     * @return get a symmetric key map by firstUser => secondUser\\n     */\\n    function getChatInitialization(address firstUser, address secondUser) external view returns (bytes memory);\\n\\n    /**\\n     * @notice get contract version\\n     * @return string of version\\n     */\\n    function getVersion() external view returns (string memory);\\n}\\n\",\"keccak256\":\"0xb387a7d8fd313afab1196e3987b264c6c2cf084e83fd9ea0cda740bf895568ce\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60c060405260056080819052640312e302e360dc1b60a09081526100269160009190610039565b5034801561003357600080fd5b5061010c565b828054610045906100d2565b90600052602060002090601f01602090048101928261006757600085556100ad565b82601f1061008057805160ff19168380011785556100ad565b828001600101855582156100ad579182015b828111156100ad578251825591602001919060010190610092565b506100b99291506100bd565b5090565b5b808211156100b957600081556001016100be565b600181811c908216806100e657607f821691505b60208210810361010657634e487b7160e01b600052602260045260246000fd5b50919050565b610d08806200011c6000396000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c80633d45f77d116100665780633d45f77d1461010057806365d431eb14610113578063821a20fa146101365780638d8613a514610149578063b684fc481461016957600080fd5b80630d8e6e2c1461009857806315d3af1c146100b6578063210c0728146100cb57806329be6698146100de575b600080fd5b6100a061017c565b6040516100ad919061095a565b60405180910390f35b6100c96100c43660046109d9565b61020e565b005b6100c96100d9366004610a5a565b610322565b6100f16100ec366004610abc565b610438565b6040516100ad93929190610ad7565b6100a061010e366004610afc565b6104e6565b610126610121366004610afc565b61058b565b60405190151581526020016100ad565b610126610144366004610abc565b610603565b61015c610157366004610abc565b610655565b6040516100ad9190610b2f565b6100a0610177366004610afc565b610746565b60606000805461018b90610b6d565b80601f01602080910402602001604051908101604052809291908181526020018280546101b790610b6d565b80156102045780601f106101d957610100808354040283529160200191610204565b820191906000526020600020905b8154815290600101906020018083116101e757829003601f168201915b5050505050905090565b61021733610603565b61023b5760405163dac5130360e01b81523360048201526024015b60405180910390fd5b61024481610603565b61026c57604051630377a1a360e51b81526001600160a01b0382166004820152602401610232565b3360009081526002602090815260408083206001600160a01b0385168452909152902061029a908686610800565b506001600160a01b038116600090815260026020908152604080832033845290915290206102c9908484610800565b50806001600160a01b0316336001600160a01b03167f255b4932584710abb8d5a97b40309f3b19546416f6fe04b6d2df0f6d2cf7ba6b878787876040516103139493929190610bd0565b60405180910390a35050505050565b61032b33610603565b1561034b57604051634fd11cfb60e11b8152336004820152602401610232565b604051806060016040528085858080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201829052509385525050508415156020808401919091526040928301859052338252600181529190208251805191926103c192849290910190610884565b506020828101516001838101805460ff1916921515929092179091556040938401516002909301929092553360008181529290915290829020915190917f413a60d9927a68d1fd6febd8578e59f31f3cdfe1f77dc1c478c3b4bc7c6392eb9161042a9190610c02565b60405180910390a250505050565b60016020526000908152604090208054819061045390610b6d565b80601f016020809104026020016040519081016040528092919081815260200182805461047f90610b6d565b80156104cc5780601f106104a1576101008083540402835291602001916104cc565b820191906000526020600020905b8154815290600101906020018083116104af57829003601f168201915b505050506001830154600290930154919260ff1691905083565b60026020908152600092835260408084209091529082529020805461050a90610b6d565b80601f016020809104026020016040519081016040528092919081815260200182805461053690610b6d565b80156105835780601f1061055857610100808354040283529160200191610583565b820191906000526020600020905b81548152906001019060200180831161056657829003601f168201915b505050505081565b6001600160a01b038083166000908152600260209081526040808320938516835292905290812080546105bd90610b6d565b15905080156105fb57506001600160a01b03808316600090815260026020908152604080832093871683529290522080546105f790610b6d565b1590505b159392505050565b6001600160a01b0381166000908152600160205260408120805461062690610b6d565b159050801561064e57506001600160a01b038216600090815260016020526040902060020154155b1592915050565b60408051606080820183528152600060208201819052918101919091526001600160a01b038216600090815260016020526040908190208151606081019092528054829082906106a490610b6d565b80601f01602080910402602001604051908101604052809291908181526020018280546106d090610b6d565b801561071d5780601f106106f25761010080835404028352916020019161071d565b820191906000526020600020905b81548152906001019060200180831161070057829003601f168201915b5050509183525050600182015460ff161515602082015260029091015460409091015292915050565b6001600160a01b03808316600090815260026020908152604080832093851683529290522080546060919061077a90610b6d565b80601f01602080910402602001604051908101604052809291908181526020018280546107a690610b6d565b80156107f35780601f106107c8576101008083540402835291602001916107f3565b820191906000526020600020905b8154815290600101906020018083116107d657829003601f168201915b5050505050905092915050565b82805461080c90610b6d565b90600052602060002090601f01602090048101928261082e5760008555610874565b82601f106108475782800160ff19823516178555610874565b82800160010185558215610874579182015b82811115610874578235825591602001919060010190610859565b506108809291506108f8565b5090565b82805461089090610b6d565b90600052602060002090601f0160209004810192826108b25760008555610874565b82601f106108cb57805160ff1916838001178555610874565b82800160010185558215610874579182015b828111156108745782518255916020019190600101906108dd565b5b8082111561088057600081556001016108f9565b6000815180845260005b8181101561093357602081850181015186830182015201610917565b81811115610945576000602083870101525b50601f01601f19169290920160200192915050565b60208152600061096d602083018461090d565b9392505050565b60008083601f84011261098657600080fd5b50813567ffffffffffffffff81111561099e57600080fd5b6020830191508360208285010111156109b657600080fd5b9250929050565b80356001600160a01b03811681146109d457600080fd5b919050565b6000806000806000606086880312156109f157600080fd5b853567ffffffffffffffff80821115610a0957600080fd5b610a1589838a01610974565b90975095506020880135915080821115610a2e57600080fd5b50610a3b88828901610974565b9094509250610a4e9050604087016109bd565b90509295509295909350565b60008060008060608587031215610a7057600080fd5b843567ffffffffffffffff811115610a8757600080fd5b610a9387828801610974565b90955093505060208501358015158114610aac57600080fd5b9396929550929360400135925050565b600060208284031215610ace57600080fd5b61096d826109bd565b606081526000610aea606083018661090d565b93151560208301525060400152919050565b60008060408385031215610b0f57600080fd5b610b18836109bd565b9150610b26602084016109bd565b90509250929050565b602081526000825160606020840152610b4b608084018261090d565b9050602084015115156040840152604084015160608401528091505092915050565b600181811c90821680610b8157607f821691505b602082108103610ba157634e487b7160e01b600052602260045260246000fd5b50919050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b604081526000610be4604083018688610ba7565b8281036020840152610bf7818587610ba7565b979650505050505050565b600060208083526060818401526000845481600182811c915080831680610c2a57607f831692505b8583108103610c4757634e487b7160e01b85526022600452602485fd5b6080880183905260a08801818015610c665760018114610c7757610ca2565b60ff19861682528782019650610ca2565b60008b81526020902060005b86811015610c9c57815484820152908501908901610c83565b83019750505b50505087015460ff1680151560408801529350610cbd915050565b6002850154606085015280925050509291505056fea264697066735822122075bb7833562a65d134940389ce9e7792be2885bb8508001f292d4c2cf9db593064736f6c634300080e0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100935760003560e01c80633d45f77d116100665780633d45f77d1461010057806365d431eb14610113578063821a20fa146101365780638d8613a514610149578063b684fc481461016957600080fd5b80630d8e6e2c1461009857806315d3af1c146100b6578063210c0728146100cb57806329be6698146100de575b600080fd5b6100a061017c565b6040516100ad919061095a565b60405180910390f35b6100c96100c43660046109d9565b61020e565b005b6100c96100d9366004610a5a565b610322565b6100f16100ec366004610abc565b610438565b6040516100ad93929190610ad7565b6100a061010e366004610afc565b6104e6565b610126610121366004610afc565b61058b565b60405190151581526020016100ad565b610126610144366004610abc565b610603565b61015c610157366004610abc565b610655565b6040516100ad9190610b2f565b6100a0610177366004610afc565b610746565b60606000805461018b90610b6d565b80601f01602080910402602001604051908101604052809291908181526020018280546101b790610b6d565b80156102045780601f106101d957610100808354040283529160200191610204565b820191906000526020600020905b8154815290600101906020018083116101e757829003601f168201915b5050505050905090565b61021733610603565b61023b5760405163dac5130360e01b81523360048201526024015b60405180910390fd5b61024481610603565b61026c57604051630377a1a360e51b81526001600160a01b0382166004820152602401610232565b3360009081526002602090815260408083206001600160a01b0385168452909152902061029a908686610800565b506001600160a01b038116600090815260026020908152604080832033845290915290206102c9908484610800565b50806001600160a01b0316336001600160a01b03167f255b4932584710abb8d5a97b40309f3b19546416f6fe04b6d2df0f6d2cf7ba6b878787876040516103139493929190610bd0565b60405180910390a35050505050565b61032b33610603565b1561034b57604051634fd11cfb60e11b8152336004820152602401610232565b604051806060016040528085858080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201829052509385525050508415156020808401919091526040928301859052338252600181529190208251805191926103c192849290910190610884565b506020828101516001838101805460ff1916921515929092179091556040938401516002909301929092553360008181529290915290829020915190917f413a60d9927a68d1fd6febd8578e59f31f3cdfe1f77dc1c478c3b4bc7c6392eb9161042a9190610c02565b60405180910390a250505050565b60016020526000908152604090208054819061045390610b6d565b80601f016020809104026020016040519081016040528092919081815260200182805461047f90610b6d565b80156104cc5780601f106104a1576101008083540402835291602001916104cc565b820191906000526020600020905b8154815290600101906020018083116104af57829003601f168201915b505050506001830154600290930154919260ff1691905083565b60026020908152600092835260408084209091529082529020805461050a90610b6d565b80601f016020809104026020016040519081016040528092919081815260200182805461053690610b6d565b80156105835780601f1061055857610100808354040283529160200191610583565b820191906000526020600020905b81548152906001019060200180831161056657829003601f168201915b505050505081565b6001600160a01b038083166000908152600260209081526040808320938516835292905290812080546105bd90610b6d565b15905080156105fb57506001600160a01b03808316600090815260026020908152604080832093871683529290522080546105f790610b6d565b1590505b159392505050565b6001600160a01b0381166000908152600160205260408120805461062690610b6d565b159050801561064e57506001600160a01b038216600090815260016020526040902060020154155b1592915050565b60408051606080820183528152600060208201819052918101919091526001600160a01b038216600090815260016020526040908190208151606081019092528054829082906106a490610b6d565b80601f01602080910402602001604051908101604052809291908181526020018280546106d090610b6d565b801561071d5780601f106106f25761010080835404028352916020019161071d565b820191906000526020600020905b81548152906001019060200180831161070057829003601f168201915b5050509183525050600182015460ff161515602082015260029091015460409091015292915050565b6001600160a01b03808316600090815260026020908152604080832093851683529290522080546060919061077a90610b6d565b80601f01602080910402602001604051908101604052809291908181526020018280546107a690610b6d565b80156107f35780601f106107c8576101008083540402835291602001916107f3565b820191906000526020600020905b8154815290600101906020018083116107d657829003601f168201915b5050505050905092915050565b82805461080c90610b6d565b90600052602060002090601f01602090048101928261082e5760008555610874565b82601f106108475782800160ff19823516178555610874565b82800160010185558215610874579182015b82811115610874578235825591602001919060010190610859565b506108809291506108f8565b5090565b82805461089090610b6d565b90600052602060002090601f0160209004810192826108b25760008555610874565b82601f106108cb57805160ff1916838001178555610874565b82800160010185558215610874579182015b828111156108745782518255916020019190600101906108dd565b5b8082111561088057600081556001016108f9565b6000815180845260005b8181101561093357602081850181015186830182015201610917565b81811115610945576000602083870101525b50601f01601f19169290920160200192915050565b60208152600061096d602083018461090d565b9392505050565b60008083601f84011261098657600080fd5b50813567ffffffffffffffff81111561099e57600080fd5b6020830191508360208285010111156109b657600080fd5b9250929050565b80356001600160a01b03811681146109d457600080fd5b919050565b6000806000806000606086880312156109f157600080fd5b853567ffffffffffffffff80821115610a0957600080fd5b610a1589838a01610974565b90975095506020880135915080821115610a2e57600080fd5b50610a3b88828901610974565b9094509250610a4e9050604087016109bd565b90509295509295909350565b60008060008060608587031215610a7057600080fd5b843567ffffffffffffffff811115610a8757600080fd5b610a9387828801610974565b90955093505060208501358015158114610aac57600080fd5b9396929550929360400135925050565b600060208284031215610ace57600080fd5b61096d826109bd565b606081526000610aea606083018661090d565b93151560208301525060400152919050565b60008060408385031215610b0f57600080fd5b610b18836109bd565b9150610b26602084016109bd565b90509250929050565b602081526000825160606020840152610b4b608084018261090d565b9050602084015115156040840152604084015160608401528091505092915050565b600181811c90821680610b8157607f821691505b602082108103610ba157634e487b7160e01b600052602260045260246000fd5b50919050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b604081526000610be4604083018688610ba7565b8281036020840152610bf7818587610ba7565b979650505050505050565b600060208083526060818401526000845481600182811c915080831680610c2a57607f831692505b8583108103610c4757634e487b7160e01b85526022600452602485fd5b6080880183905260a08801818015610c665760018114610c7757610ca2565b60ff19861682528782019650610ca2565b60008b81526020902060005b86811015610c9c57815484820152908501908901610c83565b83019750505b50505087015460ff1680151560408801529350610cbd915050565b6002850154606085015280925050509291505056fea264697066735822122075bb7833562a65d134940389ce9e7792be2885bb8508001f292d4c2cf9db593064736f6c634300080e0033",
+  "devdoc": {
+    "author": "Roongroj",
+    "kind": "dev",
+    "methods": {
+      "getChatInitialization(address,address)": {
+        "params": {
+          "firstUser": "address to query",
+          "secondUser": "address to query"
+        },
+        "returns": {
+          "_0": "get a symmetric key map by firstUser => secondUser"
+        }
+      },
+      "getUserInitialization(address)": {
+        "params": {
+          "user": "address to query"
+        },
+        "returns": {
+          "_0": "data as UserInitialization struct"
+        }
+      },
+      "getVersion()": {
+        "returns": {
+          "_0": "string of version"
+        }
+      },
+      "initializeChat(bytes,bytes,address)": {
+        "details": "Both users must be initialized",
+        "params": {
+          "callerEncryptedChatSecret": "Symmetric key, encrypted by the msg.sender's public key",
+          "peer": "address of the peer",
+          "peerEncryptedChatSecret": "Symmetric key, encrypted by the peer's public key"
+        }
+      },
+      "initializeUser(bytes,bool,bytes32)": {
+        "params": {
+          "encryptedUserSecret": "user secret to generate key-pair for the chatting application. it is encrypted by the MetaMask public key",
+          "publicKeyPrefix": "prefix of the compressed key stored as a boolean (0x02: true, 0x03: false)",
+          "publicKeyX": "32-byte X-coordinate of the compressed key"
+        }
+      },
+      "isChatInitialized(address,address)": {
+        "params": {
+          "initializer": "address to query",
+          "peer": "address to query"
+        },
+        "returns": {
+          "_0": "initialized as a boolean"
+        }
+      },
+      "isUserInitialized(address)": {
+        "params": {
+          "user": "address to query"
+        },
+        "returns": {
+          "_0": "initialized as a boolean"
+        }
+      }
+    },
+    "title": "IProntera: key keeper for chatting",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "chatInitializations(address,address)": {
+        "notice": "A shared secret between two users, encrypted by the public key of first user"
+      },
+      "getChatInitialization(address,address)": {
+        "notice": "get chat initialized information, shared secret between two users, encrypted by the public key of initializer user"
+      },
+      "getUserInitialization(address)": {
+        "notice": "get user initialized information."
+      },
+      "getVersion()": {
+        "notice": "get contract version"
+      },
+      "initializeChat(bytes,bytes,address)": {
+        "notice": "initializes a chatting session between two users: msg.sender and a given peer. A symmetric key is encrypted with both public keys once and stored for each"
+      },
+      "initializeUser(bytes,bool,bytes32)": {
+        "notice": "initialize user, some kind of registering process, which allows two things: - user will be able to generate their own key on later logins, by retrieving the encrypted key-gen input and decrypt with their MetaMask - other users will be able to encrypt messages using this users public key"
+      },
+      "isChatInitialized(address,address)": {
+        "notice": "check if initializer and user is already initialized or not"
+      },
+      "isUserInitialized(address)": {
+        "notice": "check if user is already initialized or not"
+      },
+      "userInitializations(address)": {
+        "notice": "Mapping of user to their initialization object"
+      }
+    },
+    "notice": "version 1.0",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/core/Prontera.sol:Prontera",
+        "label": "version",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 14,
+        "contract": "contracts/core/Prontera.sol:Prontera",
+        "label": "userInitializations",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_struct(UserInitialization)272_storage)"
+      },
+      {
+        "astId": 21,
+        "contract": "contracts/core/Prontera.sol:Prontera",
+        "label": "chatInitializations",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_bytes_storage))"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_bytes_storage)"
+      },
+      "t_mapping(t_address,t_struct(UserInitialization)272_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct IProntera.UserInitialization)",
+        "numberOfBytes": "32",
+        "value": "t_struct(UserInitialization)272_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(UserInitialization)272_storage": {
+        "encoding": "inplace",
+        "label": "struct IProntera.UserInitialization",
+        "members": [
+          {
+            "astId": 267,
+            "contract": "contracts/core/Prontera.sol:Prontera",
+            "label": "encryptedUserSecret",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bytes_storage"
+          },
+          {
+            "astId": 269,
+            "contract": "contracts/core/Prontera.sol:Prontera",
+            "label": "publicKeyPrefix",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_bool"
+          },
+          {
+            "astId": 271,
+            "contract": "contracts/core/Prontera.sol:Prontera",
+            "label": "publicKeyX",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bytes32"
+          }
+        ],
+        "numberOfBytes": "96"
+      }
+    }
+  }
+}
